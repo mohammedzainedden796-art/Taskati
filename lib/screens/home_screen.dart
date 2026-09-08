@@ -102,9 +102,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       taskModel: task,
                       onDismissed: (direction) {
                         if (direction == DismissDirection.startToEnd) {
-                          deleteTask(task);
-                        } else {
                           updateTask(task);
+                        } else {
+                          deleteTask(task);
+
                         }
                       },
                     );
