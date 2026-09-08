@@ -9,6 +9,7 @@ import 'package:hive/hive.dart' show Hive;
 import 'package:image_picker/image_picker.dart';
 
 import 'home_screen.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
@@ -74,7 +75,9 @@ class _AuthScreenState extends State<AuthScreen> {
                     replacement: CircleAvatar(
                       radius: 90,
                       backgroundColor: Color(0xff121212),
-                      backgroundImage: Image.file(File(photo?.path ??" ")).image,
+                      backgroundImage: (photo != null && !kIsWeb)
+                          ? Image.file(File(photo!.path)).image
+                          : null,
 
                     ),
                   ),

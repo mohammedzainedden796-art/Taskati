@@ -6,6 +6,7 @@ import 'package:app2/widgets/costum_auth_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -71,9 +72,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   CircleAvatar(
                     backgroundColor: Color(0xffB4AAAA),
                     radius: 50,
-                    backgroundImage: (userModel!=null && userModel!.image.isNotEmpty)?FileImage(File(userModel!.image)):null,
-
-
+                    backgroundImage: (userModel != null && userModel!.image.isNotEmpty && !kIsWeb)
+                        ? FileImage(File(userModel!.image)) as ImageProvider
+                        : null,
                   ),
                   InkWell(
                       onTap: (){

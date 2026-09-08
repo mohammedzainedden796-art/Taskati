@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget build(BuildContext context) {
-    print("User Name is ${userModel?.name}");
+
     return Scaffold(
       appBar: AppBar(
         actions: [

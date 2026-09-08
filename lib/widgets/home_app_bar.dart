@@ -7,6 +7,9 @@ import 'package:app2/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
+
+import 'package:flutter/foundation.dart' show kIsWeb;
+
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key, this.user});
   final UserModel?user;
@@ -38,7 +41,9 @@ class HomeAppBar extends StatelessWidget {
               },
           child: CircleAvatar(
             radius: 30,
-            backgroundImage: (user!=null && user!.image.isNotEmpty)?FileImage(File(user!.image)):null,
+    backgroundImage: (user != null && user!.image.isNotEmpty && !kIsWeb)
+    ? FileImage(File(user!.image)) as ImageProvider
+        : null,
             backgroundColor: Color(0xff121212),
 
 
